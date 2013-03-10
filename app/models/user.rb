@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   validates :name, presence: true
 
   validates :email, presence: true,
-                    format: { with: EMAIL_REGEX }
+                    format: { with: EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
 
   validates :password, presence: true,

@@ -3,6 +3,7 @@ Sailing::Application.routes.draw do
 
   match '/help', to: 'static_pages#help'
   match '/contact', to: 'static_pages#contact'
+  match '/about', to: 'static_pages#about'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

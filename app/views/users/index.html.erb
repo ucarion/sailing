@@ -3,10 +3,23 @@
 <table class="table table-striped table-bordered table-hover">
   <th>Name</th>
   <th>Email</th>
+
+  <% if current_user.admin? %>
+    <th style="width:5%">Delete</th>
+  <% end %>
+
   <% @users.each do |user| %>
     <tr>
       <td><%= user.name %></td>
       <td><%= user.email %></td>
+
+      <% if current_user.admin? %>
+        <td>
+          <% if current_user != user %>
+            <%= link_to "", user, class: "icon-remove", method: :delete, data: { confirm: "Delete user #{user.name}?" } %>
+          <% end %>
+        </td>
+      <% end %>
     </tr>
   <% end %>
 </table>

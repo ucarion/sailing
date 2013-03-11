@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_filter :check_signed_in, only: [ :edit, :update, :index ]
+  before_filter :check_signed_in,  only: [ :edit, :update, :index ]
   before_filter :check_right_user, only: [ :edit, :update ]
+  before_filter :check_admin_user, only: :destroy
 
   def show
     @user = User.find(params[:id])
@@ -41,6 +42,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    user = User.find(params[:id]).destroy
+    flash[:success] = "User #{user.name} destroyed."
+    redirect_to users_url
+  end
+
   private
 
   def check_signed_in
@@ -53,5 +60,9 @@ class UsersController < ApplicationController
   def check_right_user
     @user = User.find(params[:id])
     redirect_to root_path, notice: "You cannot edit other people's information." unless current_user == @user
+  end
+
+  def check_admin_user
+    redirect_to(root_path) unless current_user.admin?
   end
 end

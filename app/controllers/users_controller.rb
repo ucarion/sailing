@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :check_signed_in, only: [ :edit, :update ]
+  before_filter :check_signed_in, only: [ :edit, :update, :index ]
   before_filter :check_right_user, only: [ :edit, :update ]
 
   def show
@@ -8,6 +8,10 @@ class UsersController < ApplicationController
   
   def new
     @user = User.new
+  end
+
+  def index
+    @users = User.all
   end
 
   def create

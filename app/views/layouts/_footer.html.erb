@@ -1,6 +1,6 @@
 <footer class="footer">
   <small>
-    LJHS Sailing
+    LJHS Sailing &mdash; <%= signed_in? ? "You are logged in as #{current_user.name}" : "You are not logged in." %>
   </small>
   <nav>
     <ul>

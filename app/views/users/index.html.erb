@@ -16,7 +16,7 @@
       <% if current_user.admin? %>
         <td>
           <% if current_user != user %>
-            <%= link_to "", user, class: "icon-remove", method: :delete, data: { confirm: "Delete user #{user.name}?" } %>
+            <%= link_to "", user, class: "icon-remove center-image", method: :delete, data: { confirm: "Delete user #{user.name}?" } %>
           <% end %>
         </td>
       <% end %>

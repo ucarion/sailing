@@ -3,6 +3,10 @@
 <div class="hero-unit">
   <h1>LJHS Sailing</h1>
   <p>Lorem ipsum dolor sit amet!</p>
+
+  <% if !signed_in? %>
+    <%= link_to 'Sign up!', signup_path, class: 'btn btn-primary btn-large' %>
+  <% end %>
 </div>
 <p>Bla bla bla more example text here...</p>
 <p>If we wanted to, we could make this page look really awesome.</p>
